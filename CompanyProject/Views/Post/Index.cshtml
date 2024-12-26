@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 1;
+}
+@model List<Post>
+<a  asp-action="Add" class="btn btn-success">Add New Post</a>
+<a asp-controller="PotVA" asp-action="Add" class="btn btn-success">Add New Post With Validation</a>
+
+<table class="table table-warning table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Categort</th>
+          <th>Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Post post in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@post.Title</td>
+                <td>@post.Categort</td>
+                <td>
+                    <a asp-action="Details"  asp-route-id="@post.Id"  class="btn btn-info btn-sm">Details</a> ||
+                    <a href="/Post/Delete/@post.Id" class="btn btn-danger btn-sm">Delete</a> ||
+                    <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

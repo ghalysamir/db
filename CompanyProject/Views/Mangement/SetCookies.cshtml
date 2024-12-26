@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewData["Title"] = "Set Cookie";
+}
+
+<h2>Set Cookie</h2>
+
+<form method="post" asp-action="SetCookies">
+    <label for="cookieName">Cookie Name:</label>
+    <input type="text" id="cookieName" name="cookieName" required />
+
+    <label for="cookieValue">Cookie Value:</label>
+    <input type="text" id="cookieValue" name="cookieValue" required />
+
+    <button type="submit" class="btn btn-success" >Sumbit Cookie</button>
+</form>

@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 1;
+}
+@model List<User>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+<a asp-action="AddForm" class="btn btn-success">Add New User</a>
+
+<table class="table table-warning table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User usr in Model)
+        {
+            <tr>
+                <td>@(i++)</td>
+                <td>@usr.Name</td>
+                <td>@usr.Age</td>
+                <td>@usr.Email</td>
+                <td>
+                    <a href="/User/Details/@usr.Id" class="btn btn-info btn-sm">Details</a> |
+                    <a href="/User/Delete/@usr.Id" class="btn btn-danger btn-sm">Delete</a> |
+                    <a href="/User/EditForm/@usr.Id" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Hirevac</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
+    <!-- font awesome style -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- nice select -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head>
+   
+<body>
+    <div class="hero_area">
+        <!-- header section starts -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="~/index.html">
+                        <span>Hirevac</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="http://localhost:5259/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/User">User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Post">Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Post/UserPosts">User Posts</a> <!-- رابط لعرض مشاركات المستخدم فقط -->
+                            </li>
+                           @*  <li class="nav-item">
+                                <a class="nav-link" href="/User">Register</a>
+                            </li> *@
+                            <!---------------------------------------------------------------------->
+                            <!-- التحقق من حالة الجلسة وعرض اسم المستخدم -->
+                            <li class="nav-item">
+                                @if (Context.Session.GetString("UserName") != null)
+                                {
+                                    <a class="nav-link" href="#">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>@Context.Session.GetString("UserName")</span> <!-- عرض اسم المستخدم -->
+                                    </a>
+                                }
+                                else
+                                {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="~/freelancer.html">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="LoginForm">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                        <span>Login</span>
+                                    </a> 
+                                 </li>
+                                    
+                                }
+                           </li>
+                            <!---------------------------------------------------------------------->
+                            <!-- عرض زر "Logout" إذا كان المستخدم مسجلاً دخوله -->
+                            @if (Context.Session.GetString("UserName") != null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Account" asp-action="Logout">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+                            }
+                            <!---------------------------------------------------------------------->
+                            <form class="form-inline">
+                                <button class="btn nav_search-btn" type="submit">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+        <!-- slider section -->
+        <section class="slider_section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-8 mx-auto">
+                        <div class="detail-box">
+                            <h1>Build Your <br> POWERFUL CAREER</h1>
+                            <p>
+                                When looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="find_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-3">
+                                            <input type="text" class="form-control" id="inputKeywords" placeholder="Keywords">
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <select class="form-control wide" id="inputLocation">
+                                                <option value="All Locations">All Locations</option>
+                                                <option value="Location 2">Location 2</option>
+                                                <option value="Location 3">Location 3</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <select class="form-control wide" id="inputJobType">
+                                                <option value="SEO Expert">SEO Expert</option>
+                                                <option value="Web Designer">Web Designer</option>
+                                                <option value="Web Developer">Web Developer</option>
+                                                <option value="Graphic Designer">Graphic Designer</option>
+                                                <option value="Content Writer">Content Writer</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <div class="btn-box">
+                                                <button type="submit" class="btn">Submit Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <ul class="job_check_list">
+                            <li><input id="checkbox_freelancer" type="checkbox" class="styled-checkbox"><label for="checkbox_freelancer">Freelancer</label></li>
+                            <li><input id="checkbox_part_time" type="checkbox" class="styled-checkbox"><label for="checkbox_part_time">Part Time</label></li>
+                            <li><input id="checkbox_full_time" type="checkbox" class="styled-checkbox"><label for="checkbox_full_time">Full Time</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end slider section -->
+
+    </div>
+
+    <!-- category section -->
+    <section class="category_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-xl-2 px-0">
+                    <a href="#" class="box">
+                        <div class="img-box">
+                            <img src="~/images/c1.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>Web Design</h5>
+                        </div>
+                    </a>
+                </div>
+                <!-- Repeat other categories similarly... -->
+            </div>
+        </div>
+    </section>
+    <!-- end category section -->
+    <!-- about section -->
+    <section class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>@RenderBody()</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section -->
+    <footer class="footer_section">
+        <div class="container">
+            <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
+        </div>
+    </footer>
+    <!-- footer section -->
+    <!-- jQuery -->
+
+   
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    @RenderSection("Scripts",false)
+ 
+    <!-- bootstrap js -->
+    <script src="~/js/bootstrap.js"></script>
+    <!-- nice select -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+    <!-- custom js -->
+    <script src="~/js/custom.js"></script>
+
+</body>
+
+</html>
