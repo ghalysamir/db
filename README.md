@@ -127,13 +127,10 @@ Steps
 1. Clone the Repository
 
 git clone  https://github.com/ghalysamir/db.git
-cd CompanyProject
-
 
 2. Apply Migrations
 
 dotnet ef database update
-
 
 3. Run the Application
 
